@@ -6,30 +6,21 @@
     <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
     {% include 'GovUKFTBundle:Default:gds-css-headers.html.twig' %}
     {% include 'GovUKFTBundle:Default:gds-analytics.html.twig' %}
-
     <title>{{ block('title') }} - GOV.UK</title>
-
     <meta name="description" content="Find out what you need to do if your passport has been If you need to travel urgently, you may be able to get an [emergency travel document](/emergency-travel-document) from the Embassy, High Commission or Consulate. You will have to pay a fee. or stolen and how to get a replacement">
-    {# @todo where should these files live - all remote, or as part of local assets? #}
-
-    {% stylesheets 'bundles/govukft/css/enhancement.scss' filter='sass' %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-    {% endstylesheets %}
-
-    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/jquery.prettycheckable/1.2/prettyCheckable.css" />
-    <link type="text/css" rel="stylesheet" href="https://raw.github.com/bassjobsen/typeahead.js-bootstrap-css/master/typeaheadjs.css" />
+    {{ block('pres_primary') }}
+    {{ block('behav_primary') }}
+    {{ block('pres_secondary') }}
+    {{ block('behav_secondary') }}    
 {% endblock %}
 
 
 <body class="mainstream">
-
     {% include 'GovUKFTBundle:Default:gds-body-header.html.twig' %}
-
+    
     <div id="alphaMessage">
         <p>This website is in <strong>ALPHA</strong> and all content is subject to change.</p>
     </div>
-
-
     {% if ft_config['hide_breadcrumb'] is not defined or ft_config['hide_breadcrumb'] == false %}
     <div id="global-breadcrumb" class="header-context">
         <ol role="breadcrumbs" class="group">
@@ -39,12 +30,11 @@
     </div>
     {% endif %}
 
-
-  <div id="wrapper" class="answer smart_answer directgov">
+    <div id="wrapper" class="answer smart_answer directgov">
 
 
 {% block body %}
-<main id="content" role="main">
+    <main id="content" role="main">
 
     <div id="js-replaceable">
 
@@ -71,36 +61,31 @@
 
 
     {% block meta %}
-
     <div class="meta-wrapper">
         <!-- report_a_problem -->
-    <p class="report-a-problem-toggle js-footer"><a href="">Is there anything wrong with this page?</a></p>
-    <div class="report-a-problem-container">
-      <h2>Help us improve GOV.UK</h2>
-      <form accept-charset="UTF-8" action="/contact/govuk/problem_reports" method="post">
-        <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
-        <input id="url" name="url" type="hidden" value="https://www.gov.uk/report-a-lost-or-stolen-passport"><input id="source" name="source" type="hidden" value=""><input id="page_owner" name="page_owner" type="hidden" value=""><p>Please don't include any personal or financial information,
-          for example your National Insurance or credit card numbers.</p>
-
-        <label for="what_doing">What you were doing</label>
-        <input id="what_doing" name="what_doing" type="text"><label for="what_wrong">What went wrong</label>
-        <input id="what_wrong" name="what_wrong" type="text"><div><button name="commit" type="submit" class="button">Send</button></div>
-
-        <!--<p>If you have more extensive feedback, please visit the <a href="/feedback">support page</a>.</p>-->
-      </form>
-    </div>
-    <!-- end report_a_problem -->
-        <div class="meta-data group">
-      <div class="inner">
-        <div class="print-and-modified-date group">
-          <p class="modified-date">Last updated: 13 February 2014</p>
+        <p class="report-a-problem-toggle js-footer"><a href="">Is there anything wrong with this page?</a></p>
+        <div class="report-a-problem-container">
+            <h2>Help us improve GOV.UK</h2>
+            <form accept-charset="UTF-8" action="/contact/govuk/problem_reports" method="post">
+            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+            <input id="url" name="url" type="hidden" value="https://www.gov.uk/report-a-lost-or-stolen-passport"><input id="source" name="source" type="hidden" value=""><input id="page_owner" name="page_owner" type="hidden" value="">
+            <p>Please don't include any personal or financial information, for example your National Insurance or credit card numbers.</p>
+            <label for="what_doing">What you were doing</label>
+            <input id="what_doing" name="what_doing" type="text"><label for="what_wrong">What went wrong</label>
+            <input id="what_wrong" name="what_wrong" type="text"><div><button name="commit" type="submit" class="button">Send</button></div>
+            <!--<p>If you have more extensive feedback, please visit the <a href="/feedback">support page</a>.</p>-->
+          </form>
         </div>
-      </div>
+        <!-- end report_a_problem -->
+        <div class="meta-data group">
+            <div class="inner">
+                <div class="print-and-modified-date group">
+                    <p class="modified-date">Last updated: 13 February 2014</p>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-
     {% endblock %}
-
 </main>
 
 
@@ -174,28 +159,7 @@
 {% endblock %}
 
 
-
-
 <div id="global-app-error" class="app-error hidden"></div>
-{% endblock %}
-
-
-
-
-{% block Javascript %}
-    <!--
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.min.js" type="text/javascript"></script>
-    -->
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" type="text/javascript"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://omarshammas.github.io/js/jquery.formance.min.js"></script>
-
-    {% javascripts '@HmpoLso1Bundle/Resources/public/js/enhancement.js' %}
-
-        <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
 {% endblock %}
 
 
