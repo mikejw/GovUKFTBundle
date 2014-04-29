@@ -7,12 +7,19 @@
 {% endif %}
 {% endblock %}
 
+
 {% block bc %}
+<div id="global-breadcrumb" class="header-context">
+    <ol role="breadcrumbs" class="group">
 {% if ft_config['breadcrumb'] is defined %}
 {% for crumb in ft_config['breadcrumb'] %}
-  <li><a href="{{ crumb[1] }}">{{ crumb[0] }}</a></li>
+        <li><a href="{{ crumb[1] }}">{{ crumb[0] }}</a></li>
 {% endfor %}
+{% else %}
+        <li><a href="/">Home</a></li>
 {% endif %}
+    </ol>
+</div>
 {% endblock %}
 
 
