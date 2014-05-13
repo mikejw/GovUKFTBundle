@@ -103,10 +103,13 @@
 
     <div id="js-replaceable">
 
+        {% set _title = block('title') %}
+        {% if _title is not empty %}
         <header class="page-header group"><div>
             <h1>{{ block('title') }}</h1>
           </div>
         </header>
+        {% endif %}
 
         <div class="article-container group">
 
